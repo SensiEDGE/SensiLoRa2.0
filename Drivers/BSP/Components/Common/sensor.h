@@ -92,6 +92,16 @@ typedef struct
 } SensorAxes_t;
 
 /**
+ * @brief  Sensor light data structure definition
+ */
+typedef struct
+{
+  int32_t AMBIENT;
+  int32_t IR;
+  int32_t RGB;
+} SensorLight_t;
+
+/**
  * @brief  Sensor output data rate enumerator definition
  */
 typedef enum

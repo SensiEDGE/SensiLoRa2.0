@@ -86,7 +86,7 @@ extern "C" {
 #endif
 
 #define RADIO_TCXO_VCC_PORT                       GPIOA
-#define RADIO_TCXO_VCC_PIN                        GPIO_PIN_10
+#define RADIO_TCXO_VCC_PIN                        GPIO_PIN_10//GPIO_PIN_12
 
 #define RADIO_ANT_SWITCH_PORT_RX                  GPIOA //CRF1
 #define RADIO_ANT_SWITCH_PIN_RX                   GPIO_PIN_1

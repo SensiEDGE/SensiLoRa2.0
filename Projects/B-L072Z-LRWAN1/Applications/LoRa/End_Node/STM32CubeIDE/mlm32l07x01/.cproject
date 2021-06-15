@@ -39,7 +39,7 @@
                             							
                             <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.showsize.1327720539" name="Show size information about built artifact" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.showsize" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                             							
-                            <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.converthex.305059096" name="Convert to Intel Hex file (-O ihex)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.converthex" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+                            <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.converthex.305059096" name="Convert to Intel Hex file (-O ihex)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.converthex" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                             							
                             <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertsymbolsrec.1578978363" name="Convert to Motorola S-record (symbols) file (-O symbolsrec)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertsymbolsrec" useByScannerDiscovery="false" value="false" valueType="boolean"/>
                             							
@@ -70,6 +70,8 @@
                             <tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.715560107" name="MCU GCC Assembler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler">
                                 								
                                 <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.318299063" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.value.g3" valueType="enumerated"/>
+                                								
+                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths.1211377037" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths" useByScannerDiscovery="false" valueType="includePath"/>
                                 								
                                 <inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.391283929" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
                                 							
@@ -117,6 +119,14 @@
                                     									
                                     <listOptionValue builtIn="false" value="../../../../../../../../Drivers/BSP/Components/lps25hb"/>
                                     									
+                                    <listOptionValue builtIn="false" value="../../../../../../../../Drivers/BSP/Components/lsm6dsl"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="../../../../../../../../Drivers/BSP/Components/lsm303agr"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="../../../../../../../../Drivers/BSP/Components/lis3mdl"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="../../../../../../../../Drivers/BSP/Components/apds9250"/>
+                                    									
                                     <listOptionValue builtIn="false" value="../../../../../../../../Drivers/BSP/Components/sx1276"/>
                                     									
                                     <listOptionValue builtIn="false" value="../../../../../../../../Drivers/BSP/X_NUCLEO_IKS01A1"/>
@@ -126,6 +136,10 @@
                                     <listOptionValue builtIn="false" value="../../../../../../../../Drivers/BSP/B-L072Z-LRWAN1"/>
                                     									
                                     <listOptionValue builtIn="false" value="../../../../../../../../Middlewares/Third_Party/LoRaWAN/Mac/region"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="../../../../../../../../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="../../../../../../../../Middlewares/ST/STM32_USB_Device_Library/Core/Inc"/>
                                     								
                                 </option>
                                 								
@@ -225,7 +239,7 @@
                     					
                     <sourceEntries>
                         						
-                        <entry excluding="Drivers/BSP/X_NUCLEO_IKS01A1|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_pressure.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_temperature.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_humidity.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+                        <entry excluding="Drivers/BSP/Components/LPS25HB_Driver.c|Drivers/BSP/Components/LPS25HB_Driver_HL.c|Drivers/BSP/X_NUCLEO_IKS01A1|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_pressure.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_temperature.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_humidity.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
                         					
                     </sourceEntries>
                     				
@@ -305,6 +319,12 @@
                                 								
                                 <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.159951655" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.value.g0" valueType="enumerated"/>
                                 								
+                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths.1011060227" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
+                                    									
+                                    <listOptionValue builtIn="false" value="../../../../../../../../Middlewares/ST/STM32_USB_Device_Library/Core/Inc"/>
+                                    								
+                                </option>
+                                								
                                 <inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.729451717" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
                                 							
                             </tool>
@@ -360,6 +380,10 @@
                                     <listOptionValue builtIn="false" value="../../../../../../../../Drivers/BSP/B-L072Z-LRWAN1"/>
                                     									
                                     <listOptionValue builtIn="false" value="../../../../../../../../Middlewares/Third_Party/LoRaWAN/Mac/region"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="../../../../../../../../Middlewares/ST/STM32_USB_Device_Library/Core/Inc"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="../../../../../../../../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"/>
                                     								
                                 </option>
                                 								
@@ -399,13 +423,13 @@
                             							
                             <tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.298901277" name="MCU GCC Linker" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker">
                                 								
-                                <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script.1475697583" name="Linker Script (-T)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script" value="../STM32L072CZTx_FLASH.ld" valueType="string"/>
+                                <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script.1475697583" name="Linker Script (-T)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script" useByScannerDiscovery="false" value="../STM32L072CZTx_FLASH.ld" valueType="string"/>
                                 								
-                                <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.gcsections.1233038657" name="Discard unused sections (-Wl,--gc-sections)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.gcsections" value="true" valueType="boolean"/>
+                                <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.gcsections.1233038657" name="Discard unused sections (-Wl,--gc-sections)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
-                                <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.systemcalls.1615430653" name="System calls" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.systemcalls" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.systemcalls.value.minimalimplementation" valueType="enumerated"/>
+                                <option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.systemcalls.1615430653" name="System calls" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.systemcalls" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.systemcalls.value.minimalimplementation" valueType="enumerated"/>
                                 								
-                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.otherflags.1066691545" name="Other flags" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.otherflags" valueType="stringList">
+                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.otherflags.1066691545" name="Other flags" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.otherflags" useByScannerDiscovery="false" valueType="stringList">
                                     									
                                     <listOptionValue builtIn="false" value=""/>
                                     								
@@ -451,7 +475,7 @@
                     					
                     <sourceEntries>
                         						
-                        <entry excluding="Drivers/BSP/X_NUCLEO_IKS01A1|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_pressure.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_temperature.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_humidity.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+                        <entry excluding="Drivers/BSP/Components/LPS25HB_Driver.c|Drivers/BSP/Components/LPS25HB_Driver_HL.c|Drivers/BSP/X_NUCLEO_IKS01A1|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_pressure.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_temperature.c|Drivers/BSP/X_NUCLEO_IKS01A1/x_nucleo_iks01a1_humidity.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
                         					
                     </sourceEntries>
                     				
@@ -491,15 +515,21 @@
         		
         <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
         		
-        <scannerConfigBuildInfo instanceId="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1771421015;fr.ac6.managedbuild.config.gnu.cross.exe.debug.1771421015.;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.1052267287;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.1886051136">
-            			
-            <autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
-            		
-        </scannerConfigBuildInfo>
-        		
         <scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.910971036;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.910971036.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1947496204;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.257079534">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.1202740511;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.1202740511.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1514518061;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.389796379">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1771421015;fr.ac6.managedbuild.config.gnu.cross.exe.debug.1771421015.;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.1052267287;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.1886051136">
+            			
+            <autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
             		
         </scannerConfigBuildInfo>
         	

@@ -392,7 +392,7 @@ typedef struct
 /**
 * @brief Device Identification value.
 */
-#define LPS22HB_WHO_AM_I_VAL         (uint8_t)0xB1
+#define LPS22HB_WHO_AM_I_VAL         (uint8_t)0xB3
 
 
 /**
@@ -1074,7 +1074,7 @@ LPS22HB_Error_et LPS22HB_ResetAutoRifP(void *handle);
 
 /**
 * @brief  Set AutoZero Function bit
-* @detail When set to ‘1’, the actual pressure output is copied in the REF_P reg (@0x15..0x17)
+* @detail When set to ï¿½1ï¿½, the actual pressure output is copied in the REF_P reg (@0x15..0x17)
 * @param  None
 * @retval  Error Code [LPS22HB_ERROR, LPS22HB_OK]
 */
@@ -1167,7 +1167,7 @@ LPS22HB_Error_et LPS22HB_Get_Pressure(void *handle, int32_t* Pout);
 LPS22HB_Error_et LPS22HB_Get_RawTemperature(void *handle, int16_t *raw_data);
 
 /**
-* @brief  Read the Temperature value in °C.
+* @brief  Read the Temperature value in ï¿½C.
 * @param  The buffer to empty with the temperature value that must be divided by 10 to get the value in ['C]
 * @retval Error Code [LPS22HB_ERROR, LPS22HB_OK]
 */

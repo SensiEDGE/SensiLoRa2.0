@@ -1,6 +1,6 @@
 /**
  ******************************************************************************
- * @file    x_nucleo_iks01a2_magneto.c
+ * @file    x_nucleo_iks01a1_magneto.c
  * @author  MEMS Application Team
  * @version V3.0.0
  * @date    12-August-2016
@@ -36,7 +36,7 @@
  */
 
 /* Includes ------------------------------------------------------------------*/
-#include "x_nucleo_iks01a2_magneto.h"
+#include "x_nucleo_iks01a1_magneto.h"
 
 
 
@@ -44,37 +44,37 @@
  * @{
  */
 
-/** @addtogroup X_NUCLEO_IKS01A2 X_NUCLEO_IKS01A2
+/** @addtogroup X_NUCLEO_IKS01A1 X_NUCLEO_IKS01A1
  * @{
  */
 
-/** @addtogroup X_NUCLEO_IKS01A2_MAGNETO Magnetometer
+/** @addtogroup X_NUCLEO_IKS01A1_MAGNETO Magnetometer
  * @{
  */
 
-/** @addtogroup X_NUCLEO_IKS01A2_MAGNETO_Private_Variables Private variables
+/** @addtogroup X_NUCLEO_IKS01A1_MAGNETO_Private_Variables Private variables
  * @{
  */
 
 static DrvContextTypeDef MAGNETO_SensorHandle[ MAGNETO_SENSORS_MAX_NUM ];
 static MAGNETO_Data_t MAGNETO_Data[ MAGNETO_SENSORS_MAX_NUM ]; // Magnetometer - all.
-static LSM303AGR_M_Data_t LSM303AGR_M_0_Data; // Magnetometer - sensor 0.
+static LIS3MDL_Data_t LIS3MDL_0_Data; // Magnetometer - sensor 0.
 
 /**
  * @}
  */
 
-/** @addtogroup X_NUCLEO_IKS01A2_MAGNETO_Private_FunctionPrototypes Private function prototypes
+/** @addtogroup X_NUCLEO_IKS01A1_MAGNETO_Private_FunctionPrototypes Private function prototypes
  * @{
  */
 
-static DrvStatusTypeDef BSP_LSM303AGR_MAGNETO_Init( void **handle );
+static DrvStatusTypeDef BSP_LIS3MDL_MAGNETO_Init( void **handle );
 
 /**
  * @}
  */
 
-/** @addtogroup X_NUCLEO_IKS01A2_MAGNETO_Imported_Function_Prototypes Imported function prototypes
+/** @addtogroup X_NUCLEO_IKS01A1_MAGNETO_Imported_Function_Prototypes Imported function prototypes
  * @{
  */
 
@@ -85,7 +85,7 @@ extern DrvStatusTypeDef Sensor_IO_Init( void );
  * @}
  */
 
-/** @addtogroup X_NUCLEO_IKS01A2_MAGNETO_Public_Functions Private functions
+/** @addtogroup X_NUCLEO_IKS01A1_MAGNETO_Public_Functions Private functions
  * @{
  */
 
@@ -106,15 +106,15 @@ DrvStatusTypeDef BSP_MAGNETO_Init( MAGNETO_ID_t id, void **handle )
     case MAGNETO_SENSORS_AUTO:
     default:
     {
-      if( BSP_LSM303AGR_MAGNETO_Init(handle)  == COMPONENT_ERROR )
+      if( BSP_LIS3MDL_MAGNETO_Init(handle)  == COMPONENT_ERROR )
       {
         return COMPONENT_ERROR;
       }
       break;
     }
-    case LSM303AGR_M_0:
+    case LIS3MDL_0:
     {
-      if( BSP_LSM303AGR_MAGNETO_Init(handle)  == COMPONENT_ERROR )
+      if( BSP_LIS3MDL_MAGNETO_Init(handle)  == COMPONENT_ERROR )
       {
         return COMPONENT_ERROR;
       }
@@ -126,11 +126,11 @@ DrvStatusTypeDef BSP_MAGNETO_Init( MAGNETO_ID_t id, void **handle )
 }
 
 
-static DrvStatusTypeDef BSP_LSM303AGR_MAGNETO_Init( void **handle )
+static DrvStatusTypeDef BSP_LIS3MDL_MAGNETO_Init( void **handle )
 {
   MAGNETO_Drv_t *driver = NULL;
 
-  if(MAGNETO_SensorHandle[ LSM303AGR_M_0 ].isInitialized == 1)
+  if(MAGNETO_SensorHandle[ LIS3MDL_0 ].isInitialized == 1)
   {
     /* We have reached the max num of instance for this component */
     return COMPONENT_ERROR;
@@ -142,20 +142,20 @@ static DrvStatusTypeDef BSP_LSM303AGR_MAGNETO_Init( void **handle )
   }
 
   /* Setup sensor handle. */
-  MAGNETO_SensorHandle[ LSM303AGR_M_0 ].who_am_i      = LSM303AGR_MAG_WHO_AM_I;
-  MAGNETO_SensorHandle[ LSM303AGR_M_0 ].address       = LSM303AGR_MAG_I2C_ADDRESS;
-  MAGNETO_SensorHandle[ LSM303AGR_M_0 ].instance      = LSM303AGR_M_0;
-  MAGNETO_SensorHandle[ LSM303AGR_M_0 ].isInitialized = 0;
-  MAGNETO_SensorHandle[ LSM303AGR_M_0 ].isEnabled     = 0;
-  MAGNETO_SensorHandle[ LSM303AGR_M_0 ].isCombo       = 1;
-  MAGNETO_SensorHandle[ LSM303AGR_M_0 ].pData         = ( void * )&MAGNETO_Data[ LSM303AGR_M_0 ];
-  MAGNETO_SensorHandle[ LSM303AGR_M_0 ].pVTable       = ( void * )&LSM303AGR_M_Drv;
-  MAGNETO_SensorHandle[ LSM303AGR_M_0 ].pExtVTable    = 0;
+  MAGNETO_SensorHandle[ LIS3MDL_0 ].who_am_i      = LIS3MDL_MAG_WHO_AM_I;
+  MAGNETO_SensorHandle[ LIS3MDL_0 ].address       = LIS3MDL_MAG_I2C_ADDRESS_HIGH;
+  MAGNETO_SensorHandle[ LIS3MDL_0 ].instance      = LIS3MDL_0;
+  MAGNETO_SensorHandle[ LIS3MDL_0 ].isInitialized = 0;
+  MAGNETO_SensorHandle[ LIS3MDL_0 ].isEnabled     = 0;
+  MAGNETO_SensorHandle[ LIS3MDL_0 ].isCombo       = 0;
+  MAGNETO_SensorHandle[ LIS3MDL_0 ].pData         = ( void * )&MAGNETO_Data[ LIS3MDL_0 ];
+  MAGNETO_SensorHandle[ LIS3MDL_0 ].pVTable       = ( void * )&LIS3MDLDrv;
+  MAGNETO_SensorHandle[ LIS3MDL_0 ].pExtVTable    = 0;
 
-  MAGNETO_Data[ LSM303AGR_M_0 ].pComponentData = ( void * )&LSM303AGR_M_0_Data;
-  MAGNETO_Data[ LSM303AGR_M_0 ].pExtData       = 0;
+  MAGNETO_Data[ LIS3MDL_0 ].pComponentData = ( void * )&LIS3MDL_0_Data;
+  MAGNETO_Data[ LIS3MDL_0 ].pExtData       = 0;
 
-  *handle = (void *)&MAGNETO_SensorHandle[ LSM303AGR_M_0 ];
+  *handle = (void *)&MAGNETO_SensorHandle[ LIS3MDL_0 ];
 
   driver = ( MAGNETO_Drv_t * )((DrvContextTypeDef *)(*handle))->pVTable;
 

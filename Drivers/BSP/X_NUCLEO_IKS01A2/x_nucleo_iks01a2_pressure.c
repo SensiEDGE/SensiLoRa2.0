@@ -175,7 +175,7 @@ static DrvStatusTypeDef BSP_LPS22HB_PRESSURE_Init( void **handle )
   }
 
   /* Configure interrupt lines for LPS22HB */
-  LPS22HB_Sensor_IO_ITConfig();
+//  LPS22HB_Sensor_IO_ITConfig();
 
   return COMPONENT_OK;
 }

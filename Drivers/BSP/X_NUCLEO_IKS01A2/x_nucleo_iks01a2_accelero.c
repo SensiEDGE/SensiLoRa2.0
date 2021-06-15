@@ -148,7 +148,7 @@ static DrvStatusTypeDef BSP_LSM6DSL_ACCELERO_Init( void **handle )
 
   /* Setup sensor handle. */
   ACCELERO_SensorHandle[ LSM6DSL_X_0 ].who_am_i      = LSM6DSL_ACC_GYRO_WHO_AM_I;
-  ACCELERO_SensorHandle[ LSM6DSL_X_0 ].address       = LSM6DSL_ACC_GYRO_I2C_ADDRESS_HIGH;
+  ACCELERO_SensorHandle[ LSM6DSL_X_0 ].address       = LSM6DSL_ACC_GYRO_I2C_ADDRESS_LOW;
   ACCELERO_SensorHandle[ LSM6DSL_X_0 ].instance      = LSM6DSL_X_0;
   ACCELERO_SensorHandle[ LSM6DSL_X_0 ].isInitialized = 0;
   ACCELERO_SensorHandle[ LSM6DSL_X_0 ].isEnabled     = 0;
@@ -180,7 +180,7 @@ static DrvStatusTypeDef BSP_LSM6DSL_ACCELERO_Init( void **handle )
   }
 
   /* Configure interrupt lines for LSM6DSL */
-  LSM6DSL_Sensor_IO_ITConfig();
+//  LSM6DSL_Sensor_IO_ITConfig();
 
   return COMPONENT_OK;
 }

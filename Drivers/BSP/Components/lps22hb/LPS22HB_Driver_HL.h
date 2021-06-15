@@ -76,8 +76,8 @@ extern "C" {
  * @{
  */
 
-#define LPS22HB_ADDRESS_LOW      0xB8  /**< LPS22HB I2C Address Low */
-#define LPS22HB_ADDRESS_HIGH     0xBA  /**< LPS22HB I2C Address High */
+#define LPS22HB_ADDRESS_LOW      0xB9  /**< LPS22HB I2C Address Low */
+#define LPS22HB_ADDRESS_HIGH     0xBB  /**< LPS22HB I2C Address High */
 
 /**
  * @}

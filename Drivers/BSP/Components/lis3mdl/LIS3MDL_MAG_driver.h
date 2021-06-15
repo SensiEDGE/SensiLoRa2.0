@@ -99,27 +99,27 @@ typedef enum
 
 /************** I2C Address *****************/
 
-#define LIS3MDL_MAG_I2C_ADDRESS_LOW   0x38    // SAD[1] = 0
-#define LIS3MDL_MAG_I2C_ADDRESS_HIGH  0x3C    // SAD[1] = 1
+#define LIS3MDL_MAG_I2C_ADDRESS_LOW   0x3D    // SAD[1] = 0
+#define LIS3MDL_MAG_I2C_ADDRESS_HIGH  0x3D    // SAD[1] = 1
 
 /************** Who am I  *******************/
 
-#define LIS3MDL_MAG_WHO_AM_I         0x3D
+#define LIS3MDL_MAG_WHO_AM_I         0x40
 
 /************** Device Register  *******************/
-#define LIS3MDL_MAG_WHO_AM_I_REG    0X0F
+#define LIS3MDL_MAG_WHO_AM_I_REG    0x4F
 #define LIS3MDL_MAG_CTRL_REG1   0X20
 #define LIS3MDL_MAG_CTRL_REG2   0X21
 #define LIS3MDL_MAG_CTRL_REG3   0X22
 #define LIS3MDL_MAG_CTRL_REG4   0X23
 #define LIS3MDL_MAG_CTRL_REG5   0X24
 #define LIS3MDL_MAG_STATUS_REG    0X27
-#define LIS3MDL_MAG_OUTX_L    0X28
-#define LIS3MDL_MAG_OUTX_H    0X29
-#define LIS3MDL_MAG_OUTY_L    0X2A
-#define LIS3MDL_MAG_OUTY_H    0X2B
-#define LIS3MDL_MAG_OUTZ_L    0X2C
-#define LIS3MDL_MAG_OUTZ_H    0X2D
+#define LIS3MDL_MAG_OUTX_L    0X68
+#define LIS3MDL_MAG_OUTX_H    0X69
+#define LIS3MDL_MAG_OUTY_L    0X6A
+#define LIS3MDL_MAG_OUTY_H    0X6B
+#define LIS3MDL_MAG_OUTZ_L    0X6C
+#define LIS3MDL_MAG_OUTZ_H    0X6D
 #define LIS3MDL_MAG_TEMP_OUT_L    0X2E
 #define LIS3MDL_MAG_TEMP_OUT_H    0X2F
 #define LIS3MDL_MAG_INT_CFG   0X30
@@ -128,6 +128,16 @@ typedef enum
 #define LIS3MDL_MAG_INT_THS_H   0X33
 
 /************** Generic Function  *******************/
+
+
+//#define LIS2MDL_OFFSET_X_REG_L          0x45U
+//#define LIS2MDL_OFFSET_X_REG_H          0x46U
+//#define LIS2MDL_OFFSET_Y_REG_L          0x47U
+//#define LIS2MDL_OFFSET_Y_REG_H          0x48U
+//#define LIS2MDL_OFFSET_Z_REG_L          0x49U
+//#define LIS2MDL_OFFSET_Z_REG_H          0x4AU
+//#define LIS2MDL_WHO_AM_I                0x4FU
+//#define LIS2MDL_CFG_REG_A               0x60U
 
 /*******************************************************************************
 * Register      : Generic - All

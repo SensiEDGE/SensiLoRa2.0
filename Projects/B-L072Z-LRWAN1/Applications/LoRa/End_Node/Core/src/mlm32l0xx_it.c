@@ -47,8 +47,16 @@ Maintainer: Miguel Luis and Gregory Cristian
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+#define CURSOR_STEP     5
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+extern PCD_HandleTypeDef hpcd;
+
+/* UART handler declared in "usbd_cdc_interface.c" file */
+extern UART_HandleTypeDef UartHandle;
+
+/* TIM handler declared in "usbd_cdc_interface.c" file */
+extern TIM_HandleTypeDef TimHandle;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -177,12 +185,12 @@ void SysTick_Handler(void)
 }*/
 void USARTx_IRQHandler(void)
 {
-  vcom_IRQHandler();
+//  vcom_IRQHandler();
 }
 
 void USARTx_DMA_TX_IRQHandler(void)
 {
-  vcom_DMA_TX_IRQHandler();
+//  vcom_DMA_TX_IRQHandler();
 }
 
 void RTC_IRQHandler(void)
@@ -230,6 +238,16 @@ void EXTI4_15_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_14);
 
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15);
+}
+
+/**
+  * @brief  This function handles USB Handler.
+  * @param  None
+  * @retval None
+  */
+void USB_IRQHandler(void)
+{
+  HAL_PCD_IRQHandler(&hpcd);
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

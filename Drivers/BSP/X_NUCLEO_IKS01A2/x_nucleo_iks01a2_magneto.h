@@ -1,10 +1,10 @@
 /**
  ******************************************************************************
- * @file    x_nucleo_iks01a2_magneto.h
+ * @file    x_nucleo_iks01a1_magneto.h
  * @author  MEMS Application Team
  * @version V3.0.0
  * @date    12-August-2016
- * @brief   This file contains definitions for the x_nucleo_iks01a2_magneto.c
+ * @brief   This file contains definitions for the x_nucleo_iks01a1_magneto.c
  ******************************************************************************
  * @attention
  *
@@ -36,8 +36,8 @@
  */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __X_NUCLEO_IKS01A2_MAGNETO_H
-#define __X_NUCLEO_IKS01A2_MAGNETO_H
+#ifndef __X_NUCLEO_IKS01A1_MAGNETO_H
+#define __X_NUCLEO_IKS01A1_MAGNETO_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,8 +46,8 @@ extern "C" {
 
 
 /* Includes ------------------------------------------------------------------*/
-#include "LSM303AGR_MAG_driver_HL.h"
-#include "x_nucleo_iks01a2.h"
+#include "LIS3MDL_MAG_driver_HL.h"
+#include "x_nucleo_iks01a1.h"
 
 
 
@@ -55,29 +55,29 @@ extern "C" {
  * @{
  */
 
-/** @addtogroup X_NUCLEO_IKS01A2 X_NUCLEO_IKS01A2
+/** @addtogroup X_NUCLEO_IKS01A1 X_NUCLEO_IKS01A1
  * @{
  */
 
-/** @addtogroup X_NUCLEO_IKS01A2_MAGNETO Magnetometer
+/** @addtogroup X_NUCLEO_IKS01A1_MAGNETO Magnetometer
  * @{
  */
 
-/** @addtogroup X_NUCLEO_IKS01A2_MAGNETO_Public_Types Public types
+/** @addtogroup X_NUCLEO_IKS01A1_MAGNETO_Public_Types Public types
   * @{
   */
 
 typedef enum
 {
   MAGNETO_SENSORS_AUTO = -1,     /* Always first element and equal to -1 */
-  LSM303AGR_M_0                  /* Default on board. */
+  LIS3MDL_0                      /* Default on board. */
 } MAGNETO_ID_t;
 
 /**
  * @}
  */
 
-/** @addtogroup X_NUCLEO_IKS01A2_MAGNETO_Public_Defines Public defines
+/** @addtogroup X_NUCLEO_IKS01A1_MAGNETO_Public_Defines Public defines
   * @{
   */
 
@@ -88,7 +88,7 @@ typedef enum
  */
 
 
-/** @addtogroup X_NUCLEO_IKS01A2_MAGNETO_Public_Function_Prototypes Public function prototypes
+/** @addtogroup X_NUCLEO_IKS01A1_MAGNETO_Public_Function_Prototypes Public function prototypes
  * @{
  */
 
@@ -136,6 +136,6 @@ DrvStatusTypeDef BSP_MAGNETO_Get_DRDY_Status( void *handle, uint8_t *status );
 }
 #endif
 
-#endif /* __X_NUCLEO_IKS01A2_MAGNETO_H */
+#endif /* __X_NUCLEO_IKS01A1_MAGNETO_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

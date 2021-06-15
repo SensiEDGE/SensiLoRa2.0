@@ -10,6 +10,8 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Projects/End_Node/subdir.mk
+-include Middlewares/STM32_USBD_Library/Core/subdir.mk
+-include Middlewares/STM32_USBD_Library/Class/CDC/subdir.mk
 -include Middlewares/LoRaWAN/Utilities/subdir.mk
 -include Middlewares/LoRaWAN/Patterns/Basic/subdir.mk
 -include Middlewares/LoRaWAN/Mac/Regions/subdir.mk
@@ -60,6 +62,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 SensiLora2.0.list \
 
+OBJCOPY_HEX += \
+SensiLora2.0.hex \
+
 OBJCOPY_BIN += \
 SensiLora2.0.bin \
 
@@ -86,6 +91,11 @@ SensiLora2.0.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+SensiLora2.0.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "SensiLora2.0.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 SensiLora2.0.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "SensiLora2.0.bin"
 	@echo 'Finished building: $@'
@@ -96,7 +106,7 @@ clean:
 	-$(RM) *
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

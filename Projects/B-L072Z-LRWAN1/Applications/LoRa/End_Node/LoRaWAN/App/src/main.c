@@ -18,6 +18,8 @@
  */
 
 /* Includes ------------------------------------------------------------------*/
+#include "main.h"
+
 #include "hw.h"
 #include "low_power_manager.h"
 #include "lora.h"
@@ -42,8 +44,11 @@
 #define LPP_DATATYPE_DIGITAL_INPUT  0x0
 #define LPP_DATATYPE_DIGITAL_OUTPUT 0x1
 #define LPP_DATATYPE_HUMIDITY       0x68
+#define LPP_DATATYPE_ILLUMINANCE    0x65
 #define LPP_DATATYPE_TEMPERATURE    0x67
 #define LPP_DATATYPE_BAROMETER      0x73
+#define LPP_DATATYPE_ACCELEROMETER  0x71
+#define LPP_DATATYPE_GYROMETER      0x86
 #define LPP_APP_PORT 99
 /*!
  * Defines the application data transmission duty cycle. 5s, value in [ms].
@@ -118,6 +123,7 @@ static void OnTxTimerEvent(void* context);
 static void LoraMacProcessNotify(void);
 
 /* Private variables ---------------------------------------------------------*/
+
 /* load Main call backs structure*/
 static LoRaMainCallback_t LoRaMainCallbacks = { LORA_GetBatteryLevel,
                                                 HW_GetTemperatureLevel,
@@ -172,26 +178,28 @@ int main(void)
     HW_Init();
 
     /* USER CODE BEGIN 1 */
+    HAL_Delay(5000);
+
     /* USER CODE END 1 */
 
     /*Disbale Stand-by mode*/
     LPM_SetOffMode(LPM_APPLI_Id, LPM_Disable);
 
-    PRINTF("\r\n*********************************\r\n");
-    PRINTF("SensiLoRa 2.0\r\n");
+//    PRINTF("\r\n*********************************\r\n");
+//    PRINTF("SensiLoRa 2.0\r\n");
 //    PRINTF("Project configuration: %s\r\n", PROJECT_CONFIGURATION);
-    PRINTF("Hardware ver. %s\r\n", HARDWARE_VERSION);
-    PRINTF("Firmware ver. %s\r\n", FIRMWARE_VERSION);
-    PRINTF("Compiled %s %s\r\n", __DATE__, __TIME__);
-    PRINTF("*********************************\r\n");
-
-    PRINTF("Lib ver. %02X.%02X.%02X.%02X\r\n",
-           (uint8_t)(__APP_VERSION >> 24), (uint8_t)(__APP_VERSION >> 16),
-           (uint8_t)(__APP_VERSION >> 8), (uint8_t)__APP_VERSION);
-    PRINTF("MAC ver. %02X.%02X.%02X.%02X\r\n",
-           (uint8_t)(__LORA_MAC_VERSION >> 24),
-           (uint8_t)(__LORA_MAC_VERSION >> 16),
-           (uint8_t)(__LORA_MAC_VERSION >> 8), (uint8_t)__LORA_MAC_VERSION);
+//    PRINTF("Hardware ver. %s\r\n", HARDWARE_VERSION);
+//    PRINTF("Firmware ver. %s\r\n", FIRMWARE_VERSION);
+//    PRINTF("Compiled %s %s\r\n", __DATE__, __TIME__);
+//    PRINTF("*********************************\r\n");
+//
+//    PRINTF("Lib ver. %02X.%02X.%02X.%02X\r\n", (uint8_t)(__APP_VERSION >> 24),
+//           (uint8_t)(__APP_VERSION >> 16), (uint8_t)(__APP_VERSION >> 8),
+//           (uint8_t)__APP_VERSION);
+//    PRINTF("MAC ver. %02X.%02X.%02X.%02X\r\n",
+//           (uint8_t)(__LORA_MAC_VERSION >> 24),
+//           (uint8_t)(__LORA_MAC_VERSION >> 16),
+//           (uint8_t)(__LORA_MAC_VERSION >> 8), (uint8_t)__LORA_MAC_VERSION);
 
     /* Configure the Lora Stack*/
     LORA_Init(&LoRaMainCallbacks, &LoRaParamInit);
@@ -202,6 +210,7 @@ int main(void)
 
     while (1)
     {
+//        PRINTF("PING\r\n");
         if (AppProcessRequest == LORA_SET)
         {
             /*reset notification flag*/
@@ -254,7 +263,23 @@ static void Send(void* context)
     uint16_t pressure = 0;
     int16_t temperature = 0;
     uint16_t humidity = 0;
+    uint16_t illuminance = 0;
     uint8_t batteryLevel;
+
+    uint8_t accelXL = 0;
+    uint8_t accelXH = 0;
+    uint8_t accelYL = 0;
+    uint8_t accelYH = 0;
+    uint8_t accelZL = 0;
+    uint8_t accelZH = 0;
+
+    uint8_t gyroXL = 0;
+    uint8_t gyroXH = 0;
+    uint8_t gyroYL = 0;
+    uint8_t gyroYH = 0;
+    uint8_t gyroZL = 0;
+    uint8_t gyroZH = 0;
+
     sensor_t sensor_data;
 
     if (LORA_JoinStatus() != LORA_SET)
@@ -287,6 +312,22 @@ static void Send(void* context)
     temperature = (int16_t) (sensor_data.temperature * 10); /* in �C * 10 */
     pressure = (uint16_t) (sensor_data.pressure * 100 / 10); /* in hPa / 10 */
     humidity = (uint16_t) (sensor_data.humidity * 2); /* in %*2     */
+
+    accelXL = (uint8_t) (sensor_data.accelAxes.AXIS_X << 1); /* in %*2 */
+    accelXH = (uint8_t) (sensor_data.accelAxes.AXIS_X >> 7);
+    accelYL = (uint8_t) (sensor_data.accelAxes.AXIS_Y << 1);
+    accelYH = (uint8_t) (sensor_data.accelAxes.AXIS_Y >> 7);
+    accelZL = (uint8_t) (sensor_data.accelAxes.AXIS_Z << 1);
+    accelZH = (uint8_t) (sensor_data.accelAxes.AXIS_Z >> 7);
+
+    gyroXL = (uint8_t) (sensor_data.gyroAxes.AXIS_X << 0); /* in %*1 */
+    gyroXH = (uint8_t) (sensor_data.gyroAxes.AXIS_X >> 8);
+    gyroYL = (uint8_t) (sensor_data.gyroAxes.AXIS_Y << 0);
+    gyroYH = (uint8_t) (sensor_data.gyroAxes.AXIS_Y >> 8);
+    gyroZL = (uint8_t) (sensor_data.gyroAxes.AXIS_Z << 0);
+    gyroZH = (uint8_t) (sensor_data.gyroAxes.AXIS_Z >> 8);
+
+    illuminance = (uint16_t)(sensor_data.lights);
     uint32_t i = 0;
 
     batteryLevel = LORA_GetBatteryLevel(); /* 1 (very low) to 254 (fully charged) */
@@ -311,8 +352,26 @@ static void Send(void* context)
     AppData.Buff[i++] = LPP_DATATYPE_DIGITAL_INPUT;
     AppData.Buff[i++] = batteryLevel * 100 / 254;
     AppData.Buff[i++] = cchannel++;
-    AppData.Buff[i++] = LPP_DATATYPE_DIGITAL_OUTPUT;
-    AppData.Buff[i++] = AppLedStateOn;
+    AppData.Buff[i++] = LPP_DATATYPE_ILLUMINANCE;
+    AppData.Buff[i++] = (illuminance >> 8) & 0xFF;
+    AppData.Buff[i++] = illuminance & 0xFF;
+    AppData.Buff[i++] = cchannel++;
+    AppData.Buff[i++] = LPP_DATATYPE_ACCELEROMETER;
+    AppData.Buff[i++] = accelXH;
+    AppData.Buff[i++] = accelXL;
+    AppData.Buff[i++] = accelYH;
+    AppData.Buff[i++] = accelYL;
+    AppData.Buff[i++] = accelZH;
+    AppData.Buff[i++] = accelZL;
+    AppData.Buff[i++] = cchannel++;
+    AppData.Buff[i++] = LPP_DATATYPE_GYROMETER;
+    AppData.Buff[i++] = gyroXH;
+    AppData.Buff[i++] = gyroXL;
+    AppData.Buff[i++] = gyroYH;
+    AppData.Buff[i++] = gyroYL;
+    AppData.Buff[i++] = gyroZH;
+    AppData.Buff[i++] = gyroZL;
+
 #endif  /* REGION_XX915 */
 #else  /* not CAYENNE_LPP */
 
@@ -520,3 +579,4 @@ static void OnTimerLedEvent(void* context)
 }
 #endif
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+

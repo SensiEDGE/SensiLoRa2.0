@@ -136,7 +136,7 @@ extern "C" {
 #define LPS22H_INT1_O_GPIO_PORT           GPIOB
 #define LPS22H_INT1_O_GPIO_CLK_ENABLE()   __GPIOB_CLK_ENABLE()
 #define LPS22H_INT1_O_GPIO_CLK_DISABLE()  __GPIOB_CLK_DISABLE()
-#define LPS22H_INT1_O_PIN                 GPIO_PIN_10
+#define LPS22H_INT1_O_PIN                 GPIO_PIN_7
 
 #if ((defined (USE_STM32F4XX_NUCLEO)) || (defined (USE_STM32L1XX_NUCLEO)) || (defined (USE_STM32L4XX_NUCLEO)))
 #define LPS22H_INT1_O_EXTI_IRQn           EXTI15_10_IRQn
@@ -146,10 +146,10 @@ extern "C" {
 #define LPS22H_INT1_O_EXTI_IRQn           EXTI4_15_IRQn
 #endif
 
-#define LSM6DSL_INT1_O_GPIO_PORT           GPIOB
-#define LSM6DSL_INT1_O_GPIO_CLK_ENABLE()   __GPIOB_CLK_ENABLE()
-#define LSM6DSL_INT1_O_GPIO_CLK_DISABLE()  __GPIOB_CLK_DISABLE()
-#define LSM6DSL_INT1_O_PIN                 GPIO_PIN_5
+#define LSM6DSL_INT1_O_GPIO_PORT           GPIOA
+#define LSM6DSL_INT1_O_GPIO_CLK_ENABLE()   __GPIOA_CLK_ENABLE()
+#define LSM6DSL_INT1_O_GPIO_CLK_DISABLE()  __GPIOA_CLK_DISABLE()
+#define LSM6DSL_INT1_O_PIN                 GPIO_PIN_4
 
 #if ((defined (USE_STM32F4XX_NUCLEO)) || (defined (USE_STM32L1XX_NUCLEO)) || (defined (USE_STM32L4XX_NUCLEO)))
 #define LSM6DSL_INT1_O_EXTI_IRQn           EXTI9_5_IRQn
@@ -185,17 +185,17 @@ extern "C" {
 #define M_INT2_O_EXTI_IRQn           EXTI0_1_IRQn
 #endif
 
-#define LSM6DSL_INT2_O_GPIO_PORT           GPIOB
-#define LSM6DSL_INT2_O_GPIO_CLK_ENABLE()   __GPIOB_CLK_ENABLE()
+#define LSM6DSL_INT2_O_GPIO_PORT           GPIOH
+#define LSM6DSL_INT2_O_GPIO_CLK_ENABLE()   __GPIOH_CLK_ENABLE()
 #define LSM6DSL_INT2_O_GPIO_CLK_DISABLE()  __GPIOB_CLK_DISABLE()
-#define LSM6DSL_INT2_O_PIN                 GPIO_PIN_4
+#define LSM6DSL_INT2_O_PIN                 GPIO_PIN_1
 
 #if ((defined (USE_STM32F4XX_NUCLEO)) || (defined (USE_STM32L1XX_NUCLEO)) || (defined (USE_STM32L4XX_NUCLEO)))
 #define LSM6DSL_INT2_O_EXTI_IRQn           EXTI4_IRQn
 #endif
 
 #if (defined (USE_STM32L0XX_NUCLEO)|| (defined (USE_B_L072Z_LRWAN1)))
-#define LSM6DSL_INT2_O_EXTI_IRQn           EXTI4_15_IRQn
+#define LSM6DSL_INT2_O_EXTI_IRQn           EXTI0_1_IRQn
 #endif
 
 // ready for use

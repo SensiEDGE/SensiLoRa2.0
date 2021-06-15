@@ -9,6 +9,7 @@ S_SRCS :=
 C_SRCS := 
 S_UPPER_SRCS := 
 O_SRCS := 
+OBJCOPY_HEX := 
 SIZE_OUTPUT := 
 OBJDUMP_LIST := 
 EXECUTABLES := 
@@ -32,5 +33,7 @@ Middlewares/LoRaWAN/Mac \
 Middlewares/LoRaWAN/Mac/Regions \
 Middlewares/LoRaWAN/Patterns/Basic \
 Middlewares/LoRaWAN/Utilities \
+Middlewares/STM32_USBD_Library/Class/CDC \
+Middlewares/STM32_USBD_Library/Core \
 Projects/End_Node \
 

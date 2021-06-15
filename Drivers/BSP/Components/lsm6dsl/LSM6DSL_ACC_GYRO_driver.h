@@ -99,12 +99,12 @@ typedef enum
 
 /************** I2C Address *****************/
 
-#define LSM6DSL_ACC_GYRO_I2C_ADDRESS_LOW   0xD4  // SAD[0] = 0
-#define LSM6DSL_ACC_GYRO_I2C_ADDRESS_HIGH  0xD6  // SAD[0] = 1
+#define LSM6DSL_ACC_GYRO_I2C_ADDRESS_LOW   0xD5  // SAD[0] = 0
+#define LSM6DSL_ACC_GYRO_I2C_ADDRESS_HIGH  0xD7  // SAD[0] = 1
 
 /************** Who am I  *******************/
 
-#define LSM6DSL_ACC_GYRO_WHO_AM_I         0x6A
+#define LSM6DSL_ACC_GYRO_WHO_AM_I         0x6C
 
 /************** Device Register  *******************/
 
