@@ -76,8 +76,8 @@ void vcom_Init(void (*TxCb)(void))
 void vcom_Trace(uint8_t* p_data, uint16_t size)
 {
 //  HAL_UART_Transmit_DMA(&UartHandle, p_data, size);
-//    while(!(CDC_Transmit_FS(p_data, size) == USBD_BUSY));
-//    CDC_Transmit_FS(p_data, size);
+    //while(!(CDC_Transmit_FS(p_data, size) == USBD_BUSY));
+    CDC_Transmit_FS(p_data, size);
 }
 
 //void HAL_UART_TxCpltCallback(UART_HandleTypeDef *UartHandle)

@@ -453,10 +453,10 @@ void LORA_Init (LoRaMainCallback_t *callbacks, LoRaParam_t* LoRaParam )
   
 #if( OVER_THE_AIR_ACTIVATION != 0 )
 
-//  PPRINTF( "OTAA\n\r");
-//  PPRINTF( "DevEui= %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\n\r", HEX8(devEui));
-//  PPRINTF( "AppEui= %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\n\r", HEX8(joinEui));
-//  PPRINTF( "AppKey= %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\n\r", HEX16(AppKey));
+  PPRINTF( "OTAA\n\r");
+  PPRINTF( "DevEui= %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\n\r", HEX8(devEui));
+  PPRINTF( "AppEui= %02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\n\r", HEX8(joinEui));
+  PPRINTF( "AppKey= %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\n\r", HEX16(AppKey));
 #else
 
 #if (STATIC_DEVICE_ADDRESS != 1)

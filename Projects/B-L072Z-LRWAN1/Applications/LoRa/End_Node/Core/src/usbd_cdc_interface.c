@@ -454,28 +454,25 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t* Len)
 uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
 {
     uint8_t result = USBD_OK;
-//    /* USER CODE BEGIN 7 */
-//    uint32_t TimeStart = HAL_GetTick();
-//    USBD_CDC_HandleTypeDef* hcdc = (USBD_CDC_HandleTypeDef*) USBD_Device
-//            .pClassData;
-//    //if (hcdc->TxState != 0) return USBD_BUSY;
-//    while (hcdc->TxState)
-//    {
-//        if (HAL_GetTick() - TimeStart > 10)
-//            return USBD_BUSY;
-//        else
-//            break;
-//    }
-//    USBD_CDC_SetTxBuffer(&USBD_Device, Buf, Len);
-//    result = USBD_CDC_TransmitPacket(&USBD_Device);
-//    TimeStart = HAL_GetTick();
-//    while (hcdc->TxState)
-//    {
-//        if (HAL_GetTick() - TimeStart > 10)
-//            return USBD_BUSY;
-//    }
+    /* USER CODE BEGIN 7 */
+
+    USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*) USBD_Device.pClassData;
+
+    uint8_t busy_wait_attempts = 0;
+
+    while (hcdc->TxState != 0) {
+        if (++busy_wait_attempts > 3) {
+            return USBD_BUSY;
+        }
+
+        HAL_Delay(50 * busy_wait_attempts);
+    }
+
+    USBD_CDC_SetTxBuffer(&USBD_Device, Buf, Len);
+
+    result = USBD_CDC_TransmitPacket(&USBD_Device);
     /* USER CODE END 7 */
-return result;
+    return result;
 }
 
 /**

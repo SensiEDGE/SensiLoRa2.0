@@ -1,5 +1,5 @@
 /**
- ******************************************************************************
+ *****************************************************************************
  * @file    main.c
  * @author  MCD Application Team
  * @brief   this is the main!
@@ -53,7 +53,7 @@
 /*!
  * Defines the application data transmission duty cycle. 5s, value in [ms].
  */
-#define APP_TX_DUTYCYCLE                            10000
+#define APP_TX_DUTYCYCLE                            1000
 /*!
  * LoRaWAN Adaptive Data Rate
  * @note Please note that when ADR is enabled the end-device should be static
@@ -186,7 +186,7 @@ int main(void)
     LPM_SetOffMode(LPM_APPLI_Id, LPM_Disable);
 
 //    PRINTF("\r\n*********************************\r\n");
-//    PRINTF("SensiLoRa 2.0\r\n");
+    PRINTF("SensiLoRa 2.0\r\n");
 //    PRINTF("Project configuration: %s\r\n", PROJECT_CONFIGURATION);
 //    PRINTF("Hardware ver. %s\r\n", HARDWARE_VERSION);
 //    PRINTF("Firmware ver. %s\r\n", FIRMWARE_VERSION);
@@ -282,12 +282,12 @@ static void Send(void* context)
 
     sensor_t sensor_data;
 
-    if (LORA_JoinStatus() != LORA_SET)
-    {
-        /*Not joined, try again later*/
-        LORA_Join();
-        return;
-    }
+//    if (LORA_JoinStatus() != LORA_SET)
+//    {
+//        /*Not joined, try again later*/
+//        LORA_Join();
+//        return;
+//    }
 
     TVL1(PRINTF("SEND REQUEST\n\r");)
 #ifndef CAYENNE_LPP

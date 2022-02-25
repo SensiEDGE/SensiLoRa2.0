@@ -69,27 +69,27 @@ int32_t TraceSend( const char *strFormat, ...)
   va_end(vaArgs);
   int status=0;
   
-  BACKUP_PRIMASK();
-  
-  DISABLE_IRQ(); /**< Disable all interrupts by setting PRIMASK bit on Cortex*/
-  //DBG_GPIO_SET(GPIOB, GPIO_PIN_15);
-  //DBG_GPIO_RST(GPIOB, GPIO_PIN_15);
-  status =circular_queue_add(&MsgTraceQueue,(uint8_t*)buf, bufSize);
-  
-  if ((status==0 ) && (TracePeripheralReady==SET))
-  {
-    circular_queue_get(&MsgTraceQueue,&buffer,&bufSize);
-    TracePeripheralReady = RESET;
-    //DBG_GPIO_RST(GPIOB, GPIO_PIN_12);
-    LPM_SetStopMode(LPM_UART_TX_Id , LPM_Disable );
-
-    RESTORE_PRIMASK();
-    OutputTrace(buffer, bufSize);
-  }
-  else
-  {
-    RESTORE_PRIMASK();
-  }
+//  BACKUP_PRIMASK();
+//
+//  DISABLE_IRQ(); /**< Disable all interrupts by setting PRIMASK bit on Cortex*/
+//  //DBG_GPIO_SET(GPIOB, GPIO_PIN_15);
+//  //DBG_GPIO_RST(GPIOB, GPIO_PIN_15);
+//  status =circular_queue_add(&MsgTraceQueue,(uint8_t*)buf, bufSize);
+//
+//  if ((status==0 ) && (TracePeripheralReady==SET))
+//  {
+//    circular_queue_get(&MsgTraceQueue,&buffer,&bufSize);
+//    TracePeripheralReady = RESET;
+//    DBG_GPIO_RST(GPIOB, GPIO_PIN_12);
+//    LPM_SetStopMode(LPM_UART_TX_Id , LPM_Disable );
+//
+//    RESTORE_PRIMASK();
+   OutputTrace((uint8_t*)buf, strlen(buf));
+//  }
+//  else
+//  {
+//    RESTORE_PRIMASK();
+//  }
   
   return status;
 }
